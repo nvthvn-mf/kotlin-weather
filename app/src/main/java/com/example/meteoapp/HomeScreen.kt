@@ -18,10 +18,10 @@ import com.example.meteoapp.models.City
 import com.example.meteoapp.ui.theme.MeteoAppTheme
 
 @Composable
-fun HomeScreen() {
-    var cities = initialiseData()
+fun HomeScreen(modifier: Modifier = Modifier) {
+    val cities = initialiseData()
 
-    LazyColumn {
+    LazyColumn(modifier = modifier) {
         items(cities) { city -> WeatherCell(city)
         }
     }
