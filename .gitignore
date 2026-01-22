@@ -1,0 +1,55 @@
+# --- macOS (Système) ---
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Android Studio / Jetpack Compose ---
+# Fichiers de build
+/build
+.gradle/
+app/build/
+**/build/
+
+# Fichiers de configuration locale (NE JAMAIS COMMITER)
+local.properties
+sdk.dir
+
+# Fichiers IDE (IntelliJ / Android Studio)
+.idea/
+*.iml
+*.iws
+*.ipr
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/assetWizardSettings.xml
+.idea/dictionaries
+.idea/libraries
+
+# Keystore files (Sécurité)
+*.jks
+*.keystore
+*.pem
+
+# --- iOS / Xcode (SwiftUI) ---
+# Fichiers de build et données dérivées
+build/
+DerivedData/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# Fichiers utilisateur (configuration de fenêtre, breakpoints, etc.)
+*.xcuserdata
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.ouimodelproperties
+
+# Swift Package Manager
+.swiftpm/xcode/
+.build/
+
+# CocoaPods (si jamais utilisé plus tard)
+Pods/
