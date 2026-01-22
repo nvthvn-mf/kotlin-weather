@@ -1,4 +1,4 @@
-package com.example.meteoapp
+package com.example.meteoapp.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -20,6 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.meteoapp.R
 import com.example.meteoapp.models.City
 
 @Composable
