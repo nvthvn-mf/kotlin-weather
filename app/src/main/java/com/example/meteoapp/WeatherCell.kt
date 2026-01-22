@@ -20,10 +20,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import org.intellij.lang.annotations.JdkConstants
+import com.example.meteoapp.models.City
 
 @Composable
-fun WeatherCell(){
+fun WeatherCell(city: City){
     Card(
         modifier = Modifier
         .fillMaxWidth()
@@ -44,19 +44,18 @@ fun WeatherCell(){
 
             )
 
-
             Column() {
-                Text("Marseille",
+                Text(city.name,
                     fontSize = 25.sp,
                     fontWeight = FontWeight.Bold)
-                Text("Nuageux")
+                Text(text=city.weather?: "Inconnu")
             }
             Spacer(modifier = Modifier.width(50.dp))
 
             Column(
                 horizontalAlignment= Alignment.End
             ) {
-                Text("22",
+                Text(text = "${city.temperature?.toInt() ?: 0}",
                     fontSize = 25.sp)
                 Text("°C")
             }
@@ -68,5 +67,6 @@ fun WeatherCell(){
 @Preview
 @Composable
 fun WeatherCellPreview(){
-    WeatherCell()
+    var city =City(id= 6,name= "Strasbourg", icon= "sun", temperature= 17.9, weather= "Pluvieux")
+    WeatherCell(city)
 }

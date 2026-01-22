@@ -1,4 +1,4 @@
 package com.example.meteoapp.models
 
-class City(val name:String, var icon: String?, val temperature: Double?, val weather: String?) {
+class City(val id: Int, var name:String, var icon: String?, var temperature: Double?, var weather: String?) {
 }
