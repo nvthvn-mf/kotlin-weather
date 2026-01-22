@@ -22,16 +22,11 @@ fun HomeScreen() {
     var cities = initialiseData()
 
     LazyColumn {
-        items(cities) { city ->
-            Text(city.name)
-            city.weather?.let { Text(it) }
-            //Text(city.temperature)
-
+        items(cities) { city -> WeatherCell(city)
         }
-
     }
 
-    //
+    /*
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center // Centre le contenu
@@ -46,7 +41,7 @@ fun HomeScreen() {
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.primary
         )
-    }
+    } */
 }
 
 fun initialiseData(): List<City> {
