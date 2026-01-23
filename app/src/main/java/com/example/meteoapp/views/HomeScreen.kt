@@ -9,19 +9,29 @@ import com.example.meteoapp.models.City
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import com.example.meteoapp.component.AddCityDialog
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier, onCityClick: (String) -> Unit) {
 
-    val cities = initialiseData()
+    var cities by remember { mutableStateOf(initialiseData()) }
 
+    var showDialog by remember { mutableStateOf(false) }
     Scaffold(
         topBar = {
             TopAppBar(
@@ -31,7 +41,16 @@ fun HomeScreen(modifier: Modifier = Modifier, onCityClick: (String) -> Unit) {
                     titleContentColor = MaterialTheme.colorScheme.onPrimary
                 )
             )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = { showDialog = true },
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Icon(Icons.Default.Add, contentDescription = "Ajouter une ville")
+            }
         }
+
     ) { innerPadding ->
         LazyColumn(modifier = modifier.padding(innerPadding)) {
             items(cities) { city ->
@@ -44,11 +63,27 @@ fun HomeScreen(modifier: Modifier = Modifier, onCityClick: (String) -> Unit) {
                 }
             }
         }
+        if (showDialog) {
+            AddCityDialog(
+                onDismiss = { showDialog = false },
+                onCityAdded = { name ->
+                    val newCity = City(
+                        id = cities.size,
+                        name = name,
+                        icon = "sun",
+                        temperature = 0.0,
+                        weather = "Inconnu"
+                    )
+                    cities = cities + newCity
+
+                    showDialog = false
+                }
+            )
+        }
     }
 }
 
 fun initialiseData(): List<City> {
-    // Le reste est parfait
     var cities = listOf<City>(
         City(id= 0,name= "Paris", icon= "sun", temperature= 18.5, weather= "Nuageux"),
         City(id= 1,name= "Lyon", icon= "sun", temperature= 22.0, weather= "Ensoleillé"),
