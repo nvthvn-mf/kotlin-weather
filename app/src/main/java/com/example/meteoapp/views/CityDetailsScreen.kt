@@ -14,15 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.meteoapp.models.City
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 // Cet écran attend le nom de la ville et une fonction pour "revenir en arrière"
-fun CityDetailScreen(cityName: String, onBackClick: () -> Unit) {
+fun CityDetailScreen(city: City, onBackClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(cityName) },
+                title = { Text(city.name) },
                 navigationIcon = {
                     // Le bouton retour (<)
                     IconButton(onClick = onBackClick) {
@@ -37,10 +38,12 @@ fun CityDetailScreen(cityName: String, onBackClick: () -> Unit) {
     ) { innerPadding ->
         Column(modifier = Modifier.padding(innerPadding)) {
             Text(
-                text = "Détails de $cityName",
+                text = "Détails de ${city.name}",
                 fontSize = 24.sp,
                 modifier = Modifier.padding(top = 20.dp)
             )
+            Text("${city.temperature?:"--"} °C")
+            Text("${city.weather?:"Temps Inconnu "}")
             Text("Plus d'infos à venir...")
         }
     }
