@@ -21,10 +21,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.meteoapp.R
-import com.example.meteoapp.models.City
+import com.example.meteoapp.entity.CityEntity
 
 @Composable
-fun WeatherCell(city: City){
+fun WeatherCell(city: CityEntity){
     Card(
         modifier = Modifier
         .fillMaxWidth()
@@ -65,9 +65,12 @@ fun WeatherCell(city: City){
 
     }
 }
+
+/*
 @Preview
 @Composable
 fun WeatherCellPreview(){
     var city =City(id= 6,name= "Strasbourg", icon= "sun", temperature= 17.9, weather= "Pluvieux")
     WeatherCell(city)
 }
+ */

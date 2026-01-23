@@ -14,12 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.meteoapp.models.City
+import com.example.meteoapp.entity.CityEntity
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 // Cet écran attend le nom de la ville et une fonction pour "revenir en arrière"
-fun CityDetailScreen(city: City, onBackClick: () -> Unit) {
+fun CityDetailScreen(city: CityEntity, onBackClick: () -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -43,7 +43,7 @@ fun CityDetailScreen(city: City, onBackClick: () -> Unit) {
                 modifier = Modifier.padding(top = 20.dp)
             )
             Text("${city.temperature?:"--"} °C")
-            Text("${city.weather?:"Temps Inconnu "}")
+            Text(city.weather?:"Temps Inconnu ")
             Text("Plus d'infos à venir...")
         }
     }
