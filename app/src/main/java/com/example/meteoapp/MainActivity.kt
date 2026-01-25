@@ -15,6 +15,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
+import com.example.meteoapp.dao.MyAppDataBase
 import com.example.meteoapp.entity.CityEntity
 import com.example.meteoapp.ui.theme.MeteoAppTheme
 import com.example.meteoapp.views.CityDetailScreen
@@ -32,10 +33,10 @@ class MainActivity : ComponentActivity() {
                 //BDD
                 val db = Room.databaseBuilder(
                     applicationContext,
-                    AppDatabase::class.java, "city-database"
+                    MyAppDataBase::class.java, "city-database"
                 ).allowMainThreadQueries().build()
 
-                val dao = db.getDao()
+                val dao = db.cityDao()
 
                 var cities by remember { mutableStateOf(emptyList<CityEntity>()) }
 
@@ -68,7 +69,7 @@ class MainActivity : ComponentActivity() {
                     composable(
                         route = "detail/{cityName}",
                     ) { backStackEntry ->
-                        var cityName = backStackEntry.arguments?.getString("cityName") ?: "Inconnu"
+                        val cityName = backStackEntry.arguments?.getString("cityName") ?: "Inconnu"
 
                         val foundCity = cities.find { it.name == cityName }
                             ?: CityEntity(0, "Erreur", "sun", 0.0, "Ville introuvable")
@@ -86,6 +87,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+/*
 fun initialiseData(): Unit {
     var cities = listOf(
         CityEntity(name = "Paris", icon = "sun", temperature = 18.5, weather = "Nuageux"),
@@ -101,8 +104,9 @@ fun initialiseData(): Unit {
     )
     //return cities as MutableList<City>
 
-
 }
+
+ */
 
 @Preview(showBackground = true)
 @Composable
