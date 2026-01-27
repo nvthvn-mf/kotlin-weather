@@ -1,4 +1,5 @@
 package com.example.meteoapp.views
+
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -31,7 +32,8 @@ fun HomeScreen(
     cities: List<CityEntity>,
     modifier: Modifier = Modifier,
     onCityClick: (String) -> Unit,
-    onCityAdd: (String) -> Unit) {
+    onCityAdd: (String) -> Unit
+) {
 
     var showDialog by remember { mutableStateOf(false) }
     Scaffold(
@@ -69,7 +71,7 @@ fun HomeScreen(
             AddCityDialog(
                 onDismiss = { showDialog = false },
                 onCityAdded = { name ->
-                   onCityAdd(name)
+                    onCityAdd(name)
                     showDialog = false
                 }
             )
