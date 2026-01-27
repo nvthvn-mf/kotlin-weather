@@ -43,8 +43,8 @@ fun CityDetailScreen(city: CityEntity, onBackClick: () -> Unit) {
                 fontSize = 24.sp,
                 modifier = Modifier.padding(top = 20.dp)
             )
-            Text("${city.temperature?:"--"} °C")
-            Text(city.weather?:"Temps Inconnu ")
+            Text("${city.temperature ?: "--"} °C")
+            Text(city.weather ?: "Temps Inconnu ")
             Text("Plus d'infos à venir...")
         }
     }
