@@ -62,7 +62,8 @@ class MainActivity : ComponentActivity() {
                                 )
 
                                 dao.insert(newCity)
-                                cities = dao.getAllCities() // 2. On met à jour l'écran avec la nouvelle liste
+                                cities =
+                                    dao.getAllCities() // 2. On met à jour l'écran avec la nouvelle liste
                             }
                         )
                     }
