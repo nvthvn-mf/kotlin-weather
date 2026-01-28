@@ -24,11 +24,11 @@ import com.example.meteoapp.R
 import com.example.meteoapp.entity.CityEntity
 
 @Composable
-fun WeatherCell(city: CityEntity){
+fun WeatherCell(city: CityEntity) {
     Card(
         modifier = Modifier
-        .fillMaxWidth()
-        .padding(horizontal = 3.dp, vertical = 8.dp),
+            .fillMaxWidth()
+            .padding(horizontal = 3.dp, vertical = 8.dp),
     ) {
         Row(
             modifier = Modifier
@@ -46,18 +46,22 @@ fun WeatherCell(city: CityEntity){
             )
 
             Column() {
-                Text(city.name,
+                Text(
+                    city.name,
                     fontSize = 25.sp,
-                    fontWeight = FontWeight.Bold)
-                Text(text=city.weather?: "Inconnu")
+                    fontWeight = FontWeight.Bold
+                )
+                Text(text = city.weather ?: "Inconnu")
             }
             Spacer(modifier = Modifier.width(50.dp))
 
             Column(
-                horizontalAlignment= Alignment.End
+                horizontalAlignment = Alignment.End
             ) {
-                Text(text = "${city.temperature?.toInt() ?: 0}",
-                    fontSize = 25.sp)
+                Text(
+                    text = "${city.temperature?.toInt() ?: 0}",
+                    fontSize = 25.sp
+                )
                 Text("°C")
             }
 
